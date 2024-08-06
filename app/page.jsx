@@ -33,8 +33,7 @@ export default function Home() {
             }}
           >
             <Spline
-              // scene="https://prod.spline.design/6pxcSPjqUqLE7rjX/scene.splinecode"
-              scene="https://prod.spline.design/Cvk10d5folfGpzMd/scene.splinecode"
+            scene="https://prod.spline.design/Y9QTlx4vutlikNuV/scene.splinecode"
               style={{
                 position: 'absolute',
                 top: 0,
