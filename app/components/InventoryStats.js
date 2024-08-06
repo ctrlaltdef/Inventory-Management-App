@@ -26,27 +26,30 @@ const InventoryStats = ({ inventory }) => {
           value: totalProducts,
           sx: {
             backgroundColor: "#5e4955",
-            backgroundImage: "linear-gradient(135deg, #996888 24%, #c6ddf0 48%, #c99da3 72%)",
-            color: "#232523",
-          } 
+            backgroundImage:
+              "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
+            color: "#C6DDF0",
+          }
         },
         {
           label: "TOTAL STORE VALUE",
           value: `$${totalValue.toLocaleString()}`,
           sx: {
             backgroundColor: "#5e4955",
-            backgroundImage: " linear-gradient(225deg, #996888 24%, #c6ddf0 48%, #c99da3 72%);",
-            color: "#232523"
+            backgroundImage:
+              "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
+            color: "#C6DDF0"
           }
-          
-        }, 
+
+        },
         {
           label: "OUT OF STOCK",
           value: outOfStock,
           sx: {
             backgroundColor: "#c99da3",
-            backgroundImage: "linear-gradient(45deg, #996888 30%, #c6ddf0 50%, #c99da3 80%);",
-            color: "#232523"
+            backgroundImage:
+              "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
+            color: "#C6DDF0"
           }
         },
         {
@@ -54,8 +57,9 @@ const InventoryStats = ({ inventory }) => {
           value: categories.size,
           sx: {
             backgroundColor: "#c6ddf0",
-            backgroundImage: "linear-gradient(315deg, #996888 20%, #c6ddf0 50%, #c99da3 80%)",
-            color: "#232523"
+            backgroundImage:
+              "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
+            color: "#C6DDF0"
           }
         },
       ]);

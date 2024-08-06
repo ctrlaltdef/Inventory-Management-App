@@ -16,7 +16,8 @@ export default function AppBarComponent({ handleDrawerOpen }) {
     <AppBar
       position="static"
       sx={{
-        backgroundImage: "linear-gradient(301deg, #2a2b2a 0%, #5e4955 30%, #c99da3 65%, #996888 100%)",
+        backgroundImage:
+                    "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
         color: "text.primary",
         width: "100%",
       }}

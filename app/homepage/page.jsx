@@ -41,7 +41,6 @@ import { motion } from "framer-motion";
 import { InView } from "react-intersection-observer";
 import AppBar from "@/app/components/AppBar";
 import InventoryStats from "@/app/components/InventoryStats";
- 
 
 const categories = [
   "Beverages",
@@ -122,10 +121,15 @@ export default function Home() {
     setCurrentProduct(null);
   };
 
-  const handleEditProduct = (product) => {
-    setInventory((prev) =>
-      prev.map((p) => (p.id === product.id ? product : p))
-    );
+  const handleEditProduct = async (product) => {
+    try {
+      await setDoc(doc(firestore, "products", product.id), product);
+      setInventory((prev) =>
+        prev.map((p) => (p.id === product.id ? product : p))
+      );
+    } catch (error) {
+      console.error("Error updating product: ", error);
+    }
     handleAddProductClose();
   };
 
@@ -195,8 +199,8 @@ export default function Home() {
             display: "inline-block",
             padding: "10px 20px",
             borderRadius: "40px",
-            background:
-              "linear-gradient(315deg, #996888 20%, #c6ddf0 50%, #c99da3 80%)",
+            backgroundImage:
+                    "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
             border: "2px solid transparent",
             backgroundClip: "padding-box, border-box",
             backgroundOrigin: "border-box",
@@ -216,7 +220,7 @@ export default function Home() {
             },
           }}
         >
-          <Typography variant="h3" sx={{ color: "#232523", fontWeight: 800 }}>
+          <Typography variant="h3" sx={{ color: "#C6DDF0", fontWeight: 800 }}>
             INVENTORY OVERVIEW
           </Typography>
         </Box>
@@ -238,14 +242,14 @@ export default function Home() {
                 onClick={handleAddProductOpen}
                 variant="contained"
                 sx={{
-                  color: "#fff",
+                  color: "#C6DDF0",
                   backgroundColor: "#5e4955",
                   "&:hover": {
                     backgroundColor: "#996888",
                   },
                 }}
               >
-                <AddIcon sx={{ color: "#fff" }} />
+                <AddIcon sx={{ color: "#C6DDF0" }} />
                 Add New Item
               </Button>
             </Grid>
@@ -258,7 +262,8 @@ export default function Home() {
                   width: "100%",
                   backgroundColor: "#2a2b2a",
                   backgroundImage:
-                    "linear-gradient(170deg, #2a2b2a 0%, #51404a 30%, #6d3c4b 50%, #9a6581 70%, #c6ddf0 100%)",
+                    "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)"
+
                 }}
               >
                 <Table>
@@ -303,10 +308,10 @@ export default function Home() {
                                   handleAddProductOpen();
                                 }}
                               >
-                                <Edit />
+                                <Edit  sx={{color: "#C6DDF0"}}/>
                               </IconButton>
                               <IconButton onClick={() => removeItem(item.id)}>
-                                <Delete />
+                                <Delete sx={{color: "#C6DDF0"}} />
                               </IconButton>
                             </TableCell>
                             <TableCell>
@@ -345,7 +350,7 @@ export default function Home() {
               style: {
                 backgroundColor: "#51404a",
                 backgroundImage:
-                  "linear-gradient(170deg, #2a2b2a 0%, #51404a 30%, #6d3c4b 50%, #9a6581 70%, #c6ddf0 100%)",
+                    "linear-gradient(169deg, #2a2b2a 0%, #51404a 30%, #51404a 56%, #9a6581 100%)",
               },
             }}
           >
@@ -367,9 +372,11 @@ export default function Home() {
                     imageUrl: imageUrl.value,
                   };
 
-                  currentProduct
-                    ? handleEditProduct({ ...product, id: currentProduct.id })
-                    : handleAddProduct(product);
+                  if (currentProduct) {
+                    handleEditProduct({ ...product, id: currentProduct.id });
+                  } else {
+                    handleAddProduct(product);
+                  }
                 }}
               >
                 <TextField
@@ -463,7 +470,7 @@ export default function Home() {
                 <DialogActions>
                   <Button
                     onClick={handleAddProductClose}
-                    sx={{ color: "#5e4955" }}
+                    sx={{ color: "#c6ddf0" }}
                   >
                     Cancel
                   </Button>
@@ -471,7 +478,7 @@ export default function Home() {
                     type="submit"
                     variant="contained"
                     sx={{
-                      color: "#fff",
+                      color: "#c6ddf0",
                       backgroundColor: "#5e4955",
                       "&:hover": {
                         backgroundColor: "#996888",
