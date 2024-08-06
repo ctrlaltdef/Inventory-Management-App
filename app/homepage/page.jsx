@@ -41,6 +41,7 @@ import { motion } from "framer-motion";
 import { InView } from "react-intersection-observer";
 import AppBar from "@/app/components/AppBar";
 import InventoryStats from "@/app/components/InventoryStats";
+ 
 
 const categories = [
   "Beverages",
@@ -162,11 +163,6 @@ export default function Home() {
     visible: { opacity: 1, scale: 1 },
   };
 
-  const tableContainerVariants = {
-    hidden: { opacity: 0, x: -100 },
-    visible: { opacity: 1, x: 0, transition: { duration: 1 } },
-  };
-
   const tableRowVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
@@ -258,10 +254,6 @@ export default function Home() {
             {({ inView, ref }) => (
               <TableContainer
                 ref={ref}
-                component={motion.div}
-                initial="hidden"
-                animate={inView ? "visible" : "hidden"}
-                variants={tableContainerVariants}
                 sx={{
                   width: "100%",
                   backgroundColor: "#2a2b2a",

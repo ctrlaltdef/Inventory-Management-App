@@ -195,7 +195,7 @@ const SignIn = () => {
                     variant="body2"
                     sx={{ color: "#c6ddf0" }}
                   >
-                    Don't have an account? Sign Up
+                   Don&apos;t have an account? Sign Up
                   </Link>
                 </Grid>
               </Grid>
